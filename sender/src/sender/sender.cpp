@@ -23,15 +23,12 @@ namespace sender
         va_end(args);
 
         unsigned long ulBytesWritten = 0;
-        bool bWriteOk = WriteFile(hPipe,
+
+        WriteFile(hPipe,
             buffer,
             sizeof(buffer),
             &ulBytesWritten,
             NULL);
-
-        if (!bWriteOk || ulBytesWritten < sizeof(buffer)) {
-            return false;
-        }
 
         CloseHandle(hPipe);
 
